@@ -5,6 +5,7 @@
 #include <string>
 #include <ctime>
 #include <vector>
+#include <filesystem>
 using namespace std;
 
 string formatWithCommas(double value) {
@@ -164,6 +165,10 @@ int main() {
     bool exist=false;
     string p="n",curr;
     vector <string> time,money,moneyin;
+    if (!std::filesystem::exists("data"))
+    {
+        std::filesystem::create_directories("data");
+    }
     read(moneyinbank,curr,exist);
     if (!exist)
     {
@@ -315,3 +320,4 @@ int main() {
         }
     }
 }
+
